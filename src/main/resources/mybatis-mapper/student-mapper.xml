@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.Example.dao.IStudentDao" >
+	
+	<resultMap id="Result" type="com.example.Example.entity.Student">
+		<id property="id" column="id" />
+		<result property="name" column="name"/>
+		<result property="course" column="course"/>
+	</resultMap>
+	
+	<select id="getStudentById" parameterType="int" resultMap="Result">
+	    SELECT id, name, course from student WHERE id = #{empId}
+	</select>
+	
+	<insert id="createStudent" parameterType="com.example.Example.entity.Student">
+	    INSERT INTO student(`id`, `name`, `course`) values(#{id}, #{name}, #{course})
+	</insert>
+
+</mapper> 

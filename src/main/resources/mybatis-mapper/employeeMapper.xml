@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.Example.dao.IEmployeeDao" >
+	
+	<resultMap id="Result" type="com.example.Example.entity.Employee">
+		<id property="id" column="id" />
+		<result property="name" column="name"/>
+		<result property="dob" column="dob"/>
+		<result property="mobile" column="mob"/>
+	</resultMap>
+	
+	<select id="getEmployeeById" parameterType="int" resultMap="Result">
+	    SELECT id, name, dob, mob from emp WHERE id = #{empId}
+	</select>
+	
+	<insert id="createEmployee" parameterType="com.example.Example.entity.Employee">
+	    INSERT INTO emp(`id`, `name`, `dob`, `mob`) values(#{id}, #{name}, #{dob}, #{mobile})
+	</insert>
+
+	<update id="updateEmployee" parameterType="com.example.Example.entity.Employee">
+	    UPDATE emp SET name = #{name}, dob = #{dob}, mob = #{mobile} WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteEmployee" parameterType="com.example.Example.entity.Employee">
+	    DELETE FROM emp where id = #{id}
+	</delete>
+	<select id="getAllEmployee" resultMap="Result">
+		select * from emp
+	</select>
+</mapper> 
