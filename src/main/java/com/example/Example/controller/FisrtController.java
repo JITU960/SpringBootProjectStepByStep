@@ -2,6 +2,8 @@ package com.example.Example.controller;
 
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,7 @@ import com.example.Example.entity.Student;
 import com.example.Example.service.StdEmpService;
 
 @RestController
+@Slf4j
 public class FisrtController {
 	@Autowired
 	StdEmpService stdEmpService;
@@ -50,6 +53,7 @@ public class FisrtController {
 	
 	@RequestMapping(value="employee/all")
 	public List<Employee> getAllEmployee() {
+		log.error("********************debud mode set****************************");
 		return stdEmpService.getAllEmployee();
 	}
 	
